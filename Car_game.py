@@ -45,3 +45,28 @@ lanes = [lane1, lane2, lane3, lane4, lane5]
 
 # for animating movement of lane marker
 lane_marker_move_y = 0
+
+
+
+    # draw the grass
+    screen.fill(green)
+
+    # draw the score bord
+    pygame.draw.rect(screen, black, score_board)
+
+    # dra road
+    pygame.draw.rect(screen, gray, road)
+
+    # draw edge marker
+    pygame.draw.rect(screen, yellow, left_edge_marker)
+    pygame.draw.rect(screen, yellow, right_edge_marker)
+
+    # draw lane markers
+    lane_marker_move_y += (speed * 2)
+    if lane_marker_move_y >= (marker_height * 2):
+        lane_marker_move_y = 0
+    for y in range(marker_height * -2, screen_height, marker_height * 2):
+        pygame.draw.rect(screen, white, (lane1, y + lane_marker_move_y, marker_width, marker_height))
+        pygame.draw.rect(screen, white, (lane2, y + lane_marker_move_y, marker_width, marker_height))
+        pygame.draw.rect(screen, white, (lane3, y + lane_marker_move_y, marker_width, marker_height))
+        pygame.draw.rect(screen, white, (lane4, y + lane_marker_move_y, marker_width, marker_height))
