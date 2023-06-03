@@ -78,7 +78,7 @@ player_group = pygame.sprite.Group()
 player = PlayerCar(player_x, player_y)
 player_group.add(player)
 
-# lode the other car
+# lode the other cars
 image_filenames = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png", "car6.png", "car7.png"]
 car_images = []
 for image_filename in image_filenames:
