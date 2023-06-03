@@ -47,6 +47,56 @@ lanes = [lane1, lane2, lane3, lane4, lane5]
 # for animating movement of lane marker
 lane_marker_move_y = 0          # sai
 
+#akhilash code
+class Car(pygame.sprite.Sprite):
+
+    def __init__(self, image, x, y):
+        pygame.sprite.Sprite.__init__(self)
+
+        # scale the image down. so it's not wider than the lane
+        car_scale = 50 / image.get_rect().width
+        nw = image.get_rect().width * car_scale
+        nh = image.get_rect().height * car_scale
+        self.image = pygame.transform.scale(image, (nw, nh))
+
+        self.rect = self.image.get_rect()
+        self.rect.center = [x, y]
+
+
+class PlayerCar(Car):
+    def __init__(self, x, y):
+        image = pygame.image.load("New folder/SportCar.png")
+        super().__init__(image, x, y)
+
+
+# starting position
+player_x = 245
+player_y = 550
+
+# creat the player car
+player_group = pygame.sprite.Group()
+player = PlayerCar(player_x, player_y)
+player_group.add(player)
+
+# lode the other car
+image_filenames = ["car1.png", "car2.png", "car3.png", "car4.png", "car5.png", "car6.png", "car7.png"]
+car_images = []
+for image_filename in image_filenames:
+    image = pygame.image.load('New folder/' + image_filename)
+    car_images.append(image)
+
+# sprite group for other cars
+car_group = pygame.sprite.Group()
+
+# load the crash image
+crash = pygame.image.load('New folder/fire1.png')
+crash_rect = crash.get_rect()
+
+# load music
+pygame.mixer.music.load("New folder/back.wav") 
+pygame.mixer.music.play(-1, 0.0)
+crash_sound = pygame.mixer.Sound("New folder/crash.wav")   # akhilash
+
 #sandeep code
 # game loop
 clock = pygame.time.Clock()
