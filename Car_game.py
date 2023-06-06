@@ -1,4 +1,3 @@
-# sai code
 import pygame
 from pygame.locals import *
 import random
@@ -45,9 +44,8 @@ lane5 = 415
 lanes = [lane1, lane2, lane3, lane4, lane5]
 
 # for animating movement of lane marker
-lane_marker_move_y = 0          # sai
+lane_marker_move_y = 0   
 
-#akhilash code
 class Car(pygame.sprite.Sprite):
 
     def __init__(self, image, x, y):
@@ -68,7 +66,7 @@ class PlayerCar(Car):
         image = pygame.image.load("New folder/SportCar.png")
         super().__init__(image, x, y)
 
-
+        
 # starting position
 player_x = 245
 player_y = 550
@@ -95,9 +93,8 @@ crash_rect = crash.get_rect()
 # load music
 pygame.mixer.music.load("New folder/background_music.wav") 
 pygame.mixer.music.play(-1, 0.0)
-crash_sound = pygame.mixer.Sound("New folder/crash.wav")   # akhilash
+crash_sound = pygame.mixer.Sound("New folder/crash.wav")
 
-#sandeep code
 # game loop
 clock = pygame.time.Clock()
 fps = 120
@@ -131,9 +128,8 @@ while running:
                         crash_rect.center = [player.rect.left, (player.rect.center[1]  + car.rect.center[1])/2]
                     elif event.key == K_RIGHT:
                         player.rect.right = car.rect.left  + 1
-                        crash_rect.center = [player.rect.right, (player.rect.center[1]  + car.rect.center[1])/2]    # sandeep
+                        crash_rect.center = [player.rect.right, (player.rect.center[1]  + car.rect.center[1])/2]
 
-# sai code
     # draw the grass
     screen.fill(green)
 
@@ -155,9 +151,8 @@ while running:
         pygame.draw.rect(screen, white, (lane1, y + lane_marker_move_y, marker_width, marker_height))
         pygame.draw.rect(screen, white, (lane2, y + lane_marker_move_y, marker_width, marker_height))
         pygame.draw.rect(screen, white, (lane3, y + lane_marker_move_y, marker_width, marker_height))
-        pygame.draw.rect(screen, white, (lane4, y + lane_marker_move_y, marker_width, marker_height))    #sai
+        pygame.draw.rect(screen, white, (lane4, y + lane_marker_move_y, marker_width, marker_height))
     
-    # sandeep code
     #draw the player car
     player_group.draw(screen)
 
@@ -197,37 +192,36 @@ while running:
     # draw the cars
     car_group.draw(screen)
 
-    # # display score
+    # # display score and speed
     pygame.font.init()
-    font = pygame.font.Font(pygame.font.get_default_font(), 16)
-    text = font.render('Score: ' + str(score), True, white)
-    text_rect = text.get_rect()
-    text_rect.center = (600, 100)
-    screen.blit(text, text_rect)
+    font1 = pygame.font.Font(pygame.font.get_default_font(), 20)
+    text1 = font1.render('Score: ' + str(score), True, white)
+    text1_rect = text1.get_rect()
+    text1_rect.center = (600, 200)
+    screen.blit(text1, text1_rect)
+    font2 = pygame.font.Font(pygame.font.get_default_font(), 20)
+    text2 = font2.render('Speed: ' + str(speed * 20) + 'km/h', True, white)
+    text2_rect = text2.get_rect()
+    text2_rect.center = (600, 400)
+    screen.blit(text2, text2_rect)
 
     # creat if there a head collision
     if pygame.sprite.spritecollide(player, car_group, True):
         game_over = True
         crash_rect.center = [player.rect.center[0], player.rect.top]
 
-    # display game over
+    # display game over and score
     if game_over:
         pygame.mixer.music.pause()
         crash_sound.play()
-
         screen.blit(crash, crash_rect)
-
         pygame.draw.rect(screen, red, (0, 50, screen_width, 100))
-
-        font = pygame.font.Font(pygame.font.get_default_font(), 16)
-        text = font.render(f'Game Over. Your Score: {score}. Play again? (enter Y or N)', True, white)
-        text_rect = text.get_rect()
-        text_rect.center = (screen_width / 2, 100)
-        screen.blit(text, text_rect)
-
-
-      
-    
+        font3 = pygame.font.Font(pygame.font.get_default_font(), 20)
+        text3 = font3.render(f'Game Over. Your Score: {score}. Play again? (enter Y or N)', True, white)
+        text3_rect = text3.get_rect()
+        text3_rect.center = (screen_width / 2, 100)
+        screen.blit(text3, text3_rect)
+        
     pygame.display.update()
 
     # check if player want to play again
@@ -236,7 +230,6 @@ while running:
         clock.tick(fps)
 
         for event in pygame.event.get():
-
             if event.type == QUIT:
                 game_over = False
                 running = False
@@ -256,7 +249,4 @@ while running:
                     game_over = False
                     running = False
 
-
-
 pygame.quit()
-
