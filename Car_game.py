@@ -93,7 +93,7 @@ crash = pygame.image.load('New folder/fire1.png')
 crash_rect = crash.get_rect()
 
 # load music
-pygame.mixer.music.load("New folder/back.wav") 
+pygame.mixer.music.load("New folder/background_music.wav") 
 pygame.mixer.music.play(-1, 0.0)
 crash_sound = pygame.mixer.Sound("New folder/crash.wav")   # akhilash
 
