@@ -87,7 +87,7 @@ for image_filename in image_filenames:
 car_group = pygame.sprite.Group()
 
 # load the crash image
-crash = pygame.image.load('New folder/fire1.png')
+crash = pygame.image.load('New folder/fire.png')
 crash_rect = crash.get_rect()
 
 # load music
