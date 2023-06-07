@@ -9,7 +9,7 @@ screen_height = 600
 
 # for creating game window
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Car Driving Game")
+pygame.display.set_caption("Car Racing Game")
 
 # grb of colors
 gray = (100, 100, 100)
