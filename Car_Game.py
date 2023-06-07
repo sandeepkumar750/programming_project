@@ -167,10 +167,10 @@ while running:
 
         if add_car:
 
-            # select a rendum lane
+            # select one random lane
             lane = random.choice(lanes)
 
-            # select an random car image
+            # select one random car image
             image = random.choice(car_images)
             car = Car(image, lane - 30, screen_height / -2)
             car_group.add(car)
@@ -179,7 +179,7 @@ while running:
     for car in car_group:
         car.rect.y += speed
 
-        ## remove the car once it goes off screen
+        # remove the car once it goes off screen
         if car.rect.top >= screen_height:
             car.kill()
 
@@ -206,7 +206,7 @@ while running:
     text2_rect.center = (600, 400)
     screen.blit(text2, text2_rect)
 
-    # creat if there a head collision
+    # create if there is a head collision
     if pygame.sprite.spritecollide(player, car_group, True):
         game_over = True
         crash_rect.center = [player.rect.center[0], player.rect.top]
