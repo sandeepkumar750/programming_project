@@ -9,15 +9,16 @@ screen_height = 600
 
 # for creating game window
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Car Racing Game")
+pygame.display.set_caption("Car Game")
 
-# grb of colors
+# rgb of colors
 gray = (100, 100, 100)
 green = (76, 208, 56)
 red = (200, 0, 0)
 white = (255, 255, 255)
-yellow = (255, 232, 0)
 black = (0, 0, 0)
+yellow = (255, 232, 0)
+
 # Game setting
 game_over = False
 speed = 2
