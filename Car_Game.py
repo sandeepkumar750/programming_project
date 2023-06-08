@@ -120,7 +120,7 @@ while running:
             for car in car_group:
                 if pygame.sprite.collide_rect(player, car):
 
-                    gameover = True
+                    game_over = True
 
                     # place the player car next to other car
                     # and determine where to position the crash image
