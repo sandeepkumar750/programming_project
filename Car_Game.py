@@ -125,10 +125,10 @@ while running:
                     # place the player car next to other car
                     # and determine where to position the crash image
                     if event.key == K_LEFT:
-                        player.rect.left = car.rect.right -1
+                        player.rect.left = car.rect.right
                         crash_rect.center = [player.rect.left, (player.rect.center[1]  + car.rect.center[1])/2]
                     elif event.key == K_RIGHT:
-                        player.rect.right = car.rect.left  + 1
+                        player.rect.right = car.rect.left
                         crash_rect.center = [player.rect.right, (player.rect.center[1]  + car.rect.center[1])/2]
 
     # draw the grass
